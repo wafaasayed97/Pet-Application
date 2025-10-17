@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pet_application/core/di/services_locator.dart';
+import 'package:pet_application/feature/onboarding/presentation/pages/onboarding_screen.dart';
+import 'package:pet_application/feature/splash_screen.dart';
 
 import 'route_observer.dart';
 import 'route_paths.dart';
@@ -16,42 +16,12 @@ final routes = GoRouter(
   debugLogDiagnostics: true,
   observers: [],
   routes: [
-    // GoRoute(path: Routes.splashScreen, builder: (_, __) => SplashScreen()),
-    // GoRoute(
-    //   path: Routes.loginScreen,
-    //   builder: (_, __) => BlocProvider(
-    //     create: (context) => sl<LoginCubit>(),
-    //     child: LoginScreen(),
-    //   ),
-    // ),
-    // GoRoute(
-    //   path: Routes.register,
-    //   builder: (_, __) =>
+    GoRoute(path: Routes.splashScreen, builder: (_, __) => SplashScreen()),
 
-    //    BlocProvider(
-    //     create: (context) => sl<RegisterCubit>(),
-    //     child: RegisterScreen(),
-    //   ),
-    // ),
-
-    // GoRoute(
-    //   path: Routes.otpScreen,
-    //   builder: (_, __) {
-    //     final otpArgs = __.extra as OtpArgs;
-    //     return MultiBlocProvider(
-    //       providers: [
-    //         BlocProvider(create: (context) => sl<OtpCubit>()),
-    //         BlocProvider(create: (context) => sl<ForgetPasswordCubit>()),
-    //       ],
-    //       child: OtpScreen(otpArgs: otpArgs),
-    //     );
-    //   },
-    // ),
-    // GoRoute(
-    //   path: Routes.onboardingScreen,
-    //   builder: (_, __) => OnBoardingScreen(),
-    // ),
-    // GoRoute(path: Routes.letsStart, builder: (_, __) => LetsStartScreen()),
+    GoRoute(
+      path: Routes.onboardingScreen,
+      builder: (_, __) => OnBoardingScreen(),
+    ),
 
     // GoRoute(
     //   path: Routes.mainScreen,
