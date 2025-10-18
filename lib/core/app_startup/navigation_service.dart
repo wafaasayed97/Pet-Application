@@ -14,7 +14,7 @@ class AuthNavigationService {
     if (UserHelpers.isFirstTime()) {
       context.pushReplacement(Routes.onboardingScreen);
     } else {
-      context.pushReplacement(Routes.loginScreen);
+      context.pushReplacement(Routes.mainScreen);
     }
 
     // final localAuthEnabled = await sl<SecureStorage>().read(

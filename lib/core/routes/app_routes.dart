@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:pet_application/core/di/services_locator.dart';
+import 'package:pet_application/feature/favorite_pets/presentation/pages/favorite_pets_screen.dart';
+import 'package:pet_application/feature/home/presentation/pages/home_screen.dart';
+import 'package:pet_application/feature/main/presentation/cubits/main_cubit.dart';
+import 'package:pet_application/feature/main/presentation/pages/mainlay_out.dart';
 import 'package:pet_application/feature/onboarding/presentation/pages/onboarding_screen.dart';
+import 'package:pet_application/feature/pet_details/presentation/pages/pet_details_screen.dart';
 import 'package:pet_application/feature/splash_screen.dart';
 
 import 'route_observer.dart';
@@ -23,51 +30,18 @@ final routes = GoRouter(
       builder: (_, __) => OnBoardingScreen(),
     ),
 
-    // GoRoute(
-    //   path: Routes.mainScreen,
-    //   builder: (_, __) => BlocProvider(
-    //     create: (context) => sl<MainCubit>()..initialize(),
-    //     child: MainLayout(),
-    //   ),
-    // ),
-    // GoRoute(path: Routes.faceIdScreen, builder: (_, __) => FaceIDScreen()),
-    // GoRoute(
-    //   path: Routes.forgotPassword,
-    //   builder: (_, __) => BlocProvider(
-    //     create: (context) => sl<ForgetPasswordCubit>(),
-    //     child: const ForgetPasswordScreen(),
-    //   ),
-    // ),
-    // GoRoute(
-    //   path: Routes.confirmPassword,
-    //   builder: (_, __) {
-    //     final confirmPasswordArgs = __.extra as ConfirmPasswordArgs;
-    //     return BlocProvider(
-    //       create: (context) => sl<ForgetPasswordCubit>(),
-    //       child: ConfirmPasswordScreen(args: confirmPasswordArgs),
-    //     );
-    //   },
-    // ),
-    // GoRoute(
-    //   path: Routes.profileScreen,
-    //   builder: (_, __) => MultiBlocProvider(
-    //     providers: [
-    //       BlocProvider(create: (context) => sl<ProfileCubit>()),
-    //       BlocProvider(create: (context) => sl<EditProfileCubit>()),
-    //     ],
-    //     child: const ProfileScreen(),
-    //   ),
-    // ),
-
-    // GoRoute(path: Routes.projectsScreen, builder: (_, __) => ProjectsScreen()),
-    // GoRoute(
-    //   path: Routes.myAppointmentsScreen,
-    //   builder: (_, __) => MyAppointmentsScreen(),
-    // ),
-
-    // GoRoute(
-    //   path: Routes.unitDetailsScreen,
-    //   builder: (_, __) => ModelDetailsScreen(),
-    // ),
+    GoRoute(
+      path: Routes.mainScreen,
+      builder: (_, __) => BlocProvider(
+        create: (context) => sl<MainCubit>()..initialize(),
+        child: MainLayout(),
+      ),
+    ),
+    GoRoute(
+      path: Routes.favoritePets,
+      builder: (_, __) => FavoritePetsScreen(),
+    ),
+    GoRoute(path: Routes.homeScreen, builder: (_, __) => HomeScreen()),
+    GoRoute(path: Routes.petDetails, builder: (_, __) => PetDetailScreen()),
   ],
 );

@@ -5,6 +5,7 @@ class AssetsManager {
   /// >>>>>>>>>>>>>. Png Images
   static const String logo = 'logo';
   static const String onboarding = 'onboarding';
+  static const String animals = 'animals.png';
 
   /// >>>>>>>>>>>>>>>>>>>> Jpg Images
 
@@ -15,7 +16,7 @@ class AssetsManager {
   static const String facebook = 'facebook';
   static const String twitter = 'twitter';
   static const String google = 'google';
-  
+  static const String animalsSvg = 'animals';
   static const String visible = 'visible';
   static const String notVisible = 'not_visible';
   // static const String phone = 'phone';
