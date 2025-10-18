@@ -8,6 +8,7 @@ import 'package:pet_application/feature/home/presentation/pages/home_screen.dart
 import 'package:pet_application/feature/main/presentation/cubits/main_cubit.dart';
 import 'package:pet_application/feature/main/presentation/pages/mainlay_out.dart';
 import 'package:pet_application/feature/onboarding/presentation/pages/onboarding_screen.dart';
+import 'package:pet_application/feature/pet_details/presentation/cubit/pet_details_cubit.dart';
 import 'package:pet_application/feature/pet_details/presentation/pages/pet_details_screen.dart';
 import 'package:pet_application/feature/splash_screen.dart';
 
@@ -44,9 +45,27 @@ final routes = GoRouter(
     ),
     GoRoute(
       path: Routes.homeScreen,
-      builder: (_, __) =>
-          BlocProvider(create: (context) => sl<HomeCubit>()..getCatBreeds(), child: HomeScreen()),
+      builder: (_, __) => BlocProvider(
+        create: (context) => sl<HomeCubit>()..getCatBreeds(),
+        child: HomeScreen(),
+      ),
     ),
-    GoRoute(path: Routes.petDetails, builder: (_, __) => PetDetailScreen()),
+    GoRoute(
+      name: 'petDetails', 
+      path: '/pet-details/:petId',
+      builder: (context, state) {
+        final petId =
+            state.pathParameters['petId'] ?? '';     final extra = state.extra as Map<String, dynamic>?;
+        final imageUrl = extra?['imageUrl'] as String?;
+
+        return BlocProvider(
+          create: (context) => sl<PetDetailsCubit>(),
+          child: PetDetailScreen(
+            petId: petId, // Now passing String
+            imageUrl: imageUrl,
+          ),
+        );
+      },
+    ),
   ],
 );

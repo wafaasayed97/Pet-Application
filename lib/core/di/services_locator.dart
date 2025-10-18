@@ -7,6 +7,9 @@ import 'package:pet_application/core/network/session_manager.dart';
 import 'package:pet_application/feature/home/data/data_source/home_api.dart';
 import 'package:pet_application/feature/home/data/repo/home_repo.dart';
 import 'package:pet_application/feature/home/presentation/cubit/home_cubit.dart';
+import 'package:pet_application/feature/pet_details/data/data_source/pet_details_api.dart';
+import 'package:pet_application/feature/pet_details/data/repo/pet_details_repo.dart';
+import 'package:pet_application/feature/pet_details/presentation/cubit/pet_details_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../cache/preferences_storage/preferences_storage.dart';
@@ -27,6 +30,8 @@ class ServicesLocator {
     _initHiveHelper();
 
     _initHome();
+
+    _initPetDetails();
   }
 
   Future<void> _initSharedPreferencesStorage() async {
@@ -57,6 +62,12 @@ class ServicesLocator {
     sl.registerLazySingleton(() => HomeApi(networkService: sl()));
     sl.registerLazySingleton(() => HomeRepo(homeApi: sl()));
     sl.registerFactory(() => HomeCubit(sl()));
+  }
+
+  void _initPetDetails(){
+    sl.registerLazySingleton(() => PetDetailsApi(networkService: sl()));
+    sl.registerLazySingleton(() => PetDetailsRepo(petDetailsApi: sl()));
+    sl.registerFactory(() => PetDetailsCubit(sl()));
   }
  
 }

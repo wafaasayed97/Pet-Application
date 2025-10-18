@@ -241,7 +241,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return InkWell(
       onTap: () {
-        context.push(Routes.petDetails);
+        context.push(
+          '${Routes.petDetails}/${breed.id}',
+          extra: {'imageUrl': imageUrl},
+        );
       },
       child: Container(
         padding: EdgeInsets.all(12.w),
