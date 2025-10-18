@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pet_application/core/extensions/ext.dart';
+import 'package:pet_application/core/theme/styles.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -7,18 +9,10 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        title: Text(
-          'Find Your Forever Pet',
-          style: TextStyle(
-            fontSize: 18.sp,
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
-          ),
-        ),
+        title: Text('Find Your Forever Pet', style: font18w600),
         actions: [
           IconButton(
             onPressed: () {},
@@ -62,30 +56,24 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(width: 12.w),
+                12.wSpace,
                 Container(
                   padding: EdgeInsets.all(12.w),
                   decoration: BoxDecoration(
                     color: Colors.grey[100],
                     borderRadius: BorderRadius.circular(12.r),
                   ),
-                  child: Icon(Icons.tune, color: Colors.black, size: 20.sp),
+                  child: Icon(Icons.tune, color: Colors.black, size: 20),
                 ),
               ],
             ),
           ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.w),
-            child: Text(
-              'Categories',
-              style: TextStyle(
-                fontSize: 16.sp,
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
-              ),
-            ),
+            child: Text('Categories', style: font16w600),
           ),
-          SizedBox(height: 12.h),
+
+          12.hSpace,
           SizedBox(
             height: 36.h,
             child: ListView(
@@ -106,37 +94,37 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(height: 16.h),
+          16.hSpace,
           Expanded(
             child: ListView(
               padding: EdgeInsets.symmetric(horizontal: 16.w),
               children: [
                 _buildPetCard(
-                  'assets/images/pet1.png',
+                  'assets/images/animals.png',
                   'Joli',
                   'Female',
                   '5 Months Old',
                   '10 km away',
                 ),
-                SizedBox(height: 12.h),
+                12.hSpace,
                 _buildPetCard(
-                  'assets/images/pet2.png',
+                  'assets/images/animals.png',
                   'Tom',
                   'Male',
                   '1 Year Old',
                   '27 km away',
                 ),
-                SizedBox(height: 12.h),
+                12.hSpace,
                 _buildPetCard(
-                  'assets/images/pet3.png',
+                  'assets/images/animals.png',
                   'Oliver',
                   'Male',
                   '3 Months Old',
                   '2 km away',
                 ),
-                SizedBox(height: 12.h),
+                12.hSpace,
                 _buildPetCard(
-                  'assets/images/pet4.png',
+                  'assets/images/animals.png',
                   'Shelly',
                   'Female',
                   '6 Year Old',
@@ -195,7 +183,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(width: 12.w),
+          12.wSpace,
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -208,7 +196,7 @@ class HomeScreen extends StatelessWidget {
                     color: Colors.black,
                   ),
                 ),
-                SizedBox(height: 4.h),
+                4.hSpace,
                 Text(
                   gender,
                   style: TextStyle(fontSize: 12.sp, color: Colors.grey[600]),
@@ -217,7 +205,7 @@ class HomeScreen extends StatelessWidget {
                   age,
                   style: TextStyle(fontSize: 12.sp, color: Colors.grey[600]),
                 ),
-                SizedBox(height: 4.h),
+                4.hSpace,
                 Row(
                   children: [
                     Icon(Icons.location_on, color: Colors.red, size: 14.sp),
