@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pet_application/core/di/services_locator.dart';
 import 'package:pet_application/feature/favorite_pets/presentation/pages/favorite_pets_screen.dart';
+import 'package:pet_application/feature/home/presentation/cubit/home_cubit.dart';
 import 'package:pet_application/feature/home/presentation/pages/home_screen.dart';
 import 'package:pet_application/feature/main/presentation/cubits/main_cubit.dart';
 import 'package:pet_application/feature/main/presentation/pages/mainlay_out.dart';
@@ -41,7 +42,11 @@ final routes = GoRouter(
       path: Routes.favoritePets,
       builder: (_, __) => FavoritePetsScreen(),
     ),
-    GoRoute(path: Routes.homeScreen, builder: (_, __) => HomeScreen()),
+    GoRoute(
+      path: Routes.homeScreen,
+      builder: (_, __) =>
+          BlocProvider(create: (context) => sl<HomeCubit>()..getCatBreeds(), child: HomeScreen()),
+    ),
     GoRoute(path: Routes.petDetails, builder: (_, __) => PetDetailScreen()),
   ],
 );

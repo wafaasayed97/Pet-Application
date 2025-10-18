@@ -15,16 +15,11 @@ class OnBoardingScreen extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          Spacer(),
-          AppAsset(
-            assetName: AssetsManager.animals,
-            height: 300.h,
-            width: 300.w,
-          ),
-          const Spacer(),
+          150.hSpace,
+          AppAsset(assetName: AssetsManager.animals),
+          120.hSpace,
           Container(
             margin: EdgeInsets.symmetric(horizontal: 32.w),
-
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -55,7 +50,7 @@ class OnBoardingScreen extends StatelessWidget {
                   color: const Color(0xFF4FC3C3),
                   borderColor: const Color(0xFF4FC3C3),
                   onPressed: () {
-                     context.push(Routes.mainScreen);
+                    context.push(Routes.mainScreen);
                   },
                 ),
               ],

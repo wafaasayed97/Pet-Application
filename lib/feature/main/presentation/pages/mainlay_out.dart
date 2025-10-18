@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pet_application/core/di/services_locator.dart';
 import 'package:pet_application/feature/favorite_pets/presentation/pages/favorite_pets_screen.dart';
+import 'package:pet_application/feature/home/presentation/cubit/home_cubit.dart';
 import 'package:pet_application/feature/home/presentation/pages/home_screen.dart';
 
 class MainLayout extends StatefulWidget {
@@ -14,7 +17,7 @@ class _MainLayoutState extends State<MainLayout> {
   int _currentIndex = 0;
 
   final List<Widget> _screens = [
-    const HomeScreen(),
+    BlocProvider(create: (context) => sl<HomeCubit>()..getCatBreeds(), child: const HomeScreen()),
     const FavoritePetsScreen(),
     const ChatScreen(),
     const ProfileScreen(),
@@ -65,8 +68,6 @@ class _MainLayoutState extends State<MainLayout> {
     );
   }
 }
-
-
 
 class ChatScreen extends StatelessWidget {
   const ChatScreen({super.key});

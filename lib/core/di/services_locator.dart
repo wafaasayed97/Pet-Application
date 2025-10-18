@@ -4,6 +4,9 @@ import 'package:get_it/get_it.dart';
 import 'package:pet_application/core/cache/hive/hive_helper.dart';
 import 'package:pet_application/core/network/network_service.dart';
 import 'package:pet_application/core/network/session_manager.dart';
+import 'package:pet_application/feature/home/data/data_source/home_api.dart';
+import 'package:pet_application/feature/home/data/repo/home_repo.dart';
+import 'package:pet_application/feature/home/presentation/cubit/home_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../cache/preferences_storage/preferences_storage.dart';
@@ -23,20 +26,7 @@ class ServicesLocator {
 
     _initHiveHelper();
 
-    // _initRegister();
-
-    // // _initOtp();
-    // _initLogin();
-
-    // _initMainScree();
-
-    // _initHome();
-
-    // _initForgetPassword();
-
-    // _initProfile();
-
-    // _initEditProfile();
+    _initHome();
   }
 
   Future<void> _initSharedPreferencesStorage() async {
@@ -63,51 +53,10 @@ class ServicesLocator {
     sl.registerLazySingleton(() => hiveHelper);
   }
 
-  // void _initRegister() {
-  //   sl.registerLazySingleton(() => RegisterApi(networkService: sl()));
-  //   sl.registerLazySingleton(() => RegisterRepo(registerApi: sl()));
-  //   sl.registerFactory(() => RegisterCubit(sl()));
-  // }
-
-  // void _initOtp() {
-  //   sl.registerLazySingleton(() => OtpApi(sl()));
-  //   sl.registerLazySingleton(() => OtpRepo(sl()));
-  //   sl.registerFactory(() => OtpCubit(sl()));
-  // }
-
-  // void _initLogin() {
-  //   sl.registerLazySingleton(() => LoginApi(networkService: sl()));
-  //   sl.registerLazySingleton(() => LoginRepo( loginApi: sl()));
-  //   sl.registerFactory(() => LoginCubit(sl(), sl()));
-  //   sl.registerLazySingleton<LocalAuthentication>(() => LocalAuthentication());
-  // }
-
-  // void _initMainScree() {
-  //   sl.registerFactory(() => MainCubit(sl()));
-  // }
-  // void _initHome(){
-  //   sl.registerFactory(() => HomeCubit(sl()));
-  //   sl.registerLazySingleton(()=>HomeRepo(homeApi: sl()));
-  //   sl.registerLazySingleton(()=>HomeApi(networkService: sl()));
-
-  // }
-  // void _initForgetPassword() {
-  //   sl.registerLazySingleton(() => ForgetPasswordApi(networkService: sl()));
-  //   sl.registerLazySingleton(() => ForgetPasswordRepo(api: sl()));
-  //   sl.registerFactory(() => ForgetPasswordCubit(sl()));
-  // }
-
-  // void _initProfile() {
-  //   sl.registerLazySingleton(() => ProfileApi(sl()));
-  //   sl.registerLazySingleton(() => ProfileRepo(sl(), sl()));
-  //   sl.registerLazySingleton(() => ProfileLocal(sl()));
-  //   sl.registerFactory(() => ProfileCubit(sl()));
-  // }
-
-  // void _initEditProfile() {
-  //   sl.registerLazySingleton(() => EditProfileApi( networkService: sl()));
-  //   sl.registerLazySingleton(() => EditProfileRepo( api: sl(), local: sl()));
-  //   sl.registerLazySingleton(() => EditProfileLocal(sl()));
-  //   sl.registerFactory(() => EditProfileCubit(sl()));
-  // }
+  void _initHome() {
+    sl.registerLazySingleton(() => HomeApi(networkService: sl()));
+    sl.registerLazySingleton(() => HomeRepo(homeApi: sl()));
+    sl.registerFactory(() => HomeCubit(sl()));
+  }
+ 
 }
