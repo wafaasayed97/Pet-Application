@@ -75,7 +75,7 @@ void main() {
       act: (cubit) => cubit.getCatBreeds(),
       expect: () => [
         isA<HomeLoading>(),
-        isA<Homefailure>()
+        isA<HomeFailure>()
             .having((state) => state.message, 'message', 'Network error occurred'),
       ],
       verify: (_) {

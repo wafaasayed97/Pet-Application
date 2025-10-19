@@ -101,9 +101,12 @@ void main() {
     test(
       'should return Failure when JSON parsing fails',
       () async {
-        // arrange - malformed data
+        // arrange - malformed data that will cause parsing error
         final malformedData = [
-          {'invalid': 'data without required fields'}
+          {
+            'id': 'test',
+            'weight': 'invalid_weight_format', // Should be an object, not string
+          }
         ];
         when(() => mockNetworkService.getData(
               endPoint: any(named: 'endPoint'),

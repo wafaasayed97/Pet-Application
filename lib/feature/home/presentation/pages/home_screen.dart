@@ -123,7 +123,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   );
                 }
 
-                if (state is Homefailure) {
+                if (state is HomeFailure) {
                   return Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,

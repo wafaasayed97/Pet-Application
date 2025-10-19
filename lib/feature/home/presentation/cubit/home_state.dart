@@ -17,7 +17,7 @@ final class HomeSuccess extends HomeState {
   HomeSuccess(this.catBreeds);
 }
 
-final class Homefailure extends HomeState {
+final class HomeFailure extends HomeState {
   final String message;
-  Homefailure(this.message);
+  HomeFailure(this.message);
 }

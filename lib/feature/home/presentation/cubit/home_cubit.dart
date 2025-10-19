@@ -10,7 +10,7 @@ class HomeCubit extends Cubit<HomeState> {
     emit(HomeLoading());
     final response = await catBreedRepo.getCatBreeds();
     response.fold(
-      (error) => emit(Homefailure(error.message)),
+      (error) => emit(HomeFailure(error.message)),
       (data) => emit(HomeSuccess(data)),
     );
   }
